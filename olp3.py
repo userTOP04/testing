@@ -1,17 +1,28 @@
-from random import randint
+# Задание 3
 
-amount = 10
-my_list = []
-count = 0
-for elements in range(amount):
-	my_list.append(randint(1, 100))
+my_list = input('Введите элементы через пробел: ').split()
+for index, elements in enumerate(my_list):
+	my_list[index] = int(my_list[index])
 
-for cycle in range(amount - 1):
-	for idx in range(amount - 1 - cycle):
-		if my_list[idx] > my_list[idx + 1]:
-			count += 1
-			my_list[idx], my_list[idx + 1] = my_list[idx + 1], my_list[idx]
 
+def bubble_sort(my_list: list) -> None:
+	counter = 0
+	for element in my_list:
+		repeat = False
+		for index in range(len(my_list) - 1):
+			counter += 1
+			if my_list[index] < my_list[index + 1]:
+				my_list[index], my_list[index + 1] = my_list[index + 1], my_list[index]
+				repeat = True 
+		if not repeat:
+			return counter
+	return counter
+
+	
+
+
+counter = bubble_sort(my_list)
 print(my_list)
-print(count)
+print(counter)
+
 
